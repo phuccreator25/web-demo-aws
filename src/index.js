@@ -21,6 +21,11 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Root Health Check for AWS Target Group Health Check
+app.get('/', (req, res) => {
+  res.status(200).send('OK - Express Server is Running');
+});
+
 // Health Check API
 app.get('/api/health', (req, res) => {
   res.json({
